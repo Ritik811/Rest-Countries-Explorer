@@ -1,16 +1,44 @@
-# React + Vite
+......Start Project...React Practices All Topices....
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Step 1 :- Create Diffrent Types of Pages  
+1. Create Pages Folder and Create All Page in Here...
+2. Create Home Page About Page Contact Page and Country Page...
 
-Currently, two official plugins are available:
+// Start Step React Router dom and Basic Route Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Create Router using createBrowserRouter 
 
-## React Compiler
+example :- 
+const router = createBrowserRouter([
+  {
+    path: "/",  // Kaha pr jana hai  
+    element: <Home />, // kon sa page open krna hai 
+  },
+  {
+    path: "about",
+    element: <About />,
+  },
+  {
+    path: "contact",
+    element: <Contact />,
+  },
+  {
+    path: "country",
+    element: <Country />,
+  },
+]);
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. after the create route use RouterProvider 
 
-## Expanding the ESLint configuration
+exmaple:- code
+const App = () => {
+  return <RouterProvider router={router}>
+    
+  </RouterProvider>;
+};
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Finished The Basic Setup of React Router Dom
+
+
+
+
