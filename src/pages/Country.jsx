@@ -1,3 +1,3 @@
-export const Contry = () => {
-  return <h1>Contry Page</h1>;
+export const Country = () => {
+  return <h1>Country Page</h1>;
 };
