@@ -9,8 +9,8 @@ export const Home = () => {
             Explore The World, One Country at a Time
           </h1>
           <p className="paragraph">
-            Discover The history culture and beauty of every nation Sort. Search
-            and filter through conuntries to find the details you need.
+            Discover The history culture and bea uty of every nation Sort.
+            Search and filter through conuntries to find the details you need.
           </p>
           <button className="btn btn-darken btn-inline bt-white-box">
             Start Exploring <FaLongArrowAltRight />
