@@ -6,7 +6,7 @@ export const About = () => {
       <h2 className="container-title">
         Here are the Interesting Facts
         <br />
-        we’re proud of
+        we're proud of
       </h2>
 
       <div className="gradient-cards">

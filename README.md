@@ -112,7 +112,24 @@ Example:- const error = useRouteError(); iske console ke under dekh skte hai ism
 // Start Create Hero Section in Home Pages 
 // Done
 
-// Start About Page
+// Start About Page and Finished
+
+
+// Start Create a Contact Page and Learn New Things
+
+Step 1. How Access Form data in React19V without using useRef and useSate hooks
+example 
+const handleFormSubmit = (formData) => {
+    const data = Object.fromEntries(formData.entries()); 
+    // formData.entries() hamara data key pair ke form me lekr ata hai or uske baad usko 
+    Object ki formme convert krne ke liye ham Object.fromEntries ka use krte hai
+    console.log(data);
+  };
+
+  // Finished..
+
+// Start Creat Footer 
+
 
 
 
