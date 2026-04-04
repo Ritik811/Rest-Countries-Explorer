@@ -231,3 +231,16 @@ const searchCountry = (curCountry) => {
 
 // Start Sort Asc or Des order 
 Step 1. code:- 
+const handleSortCountry = (value) => {
+    console.log("yes");
+    const sortCountry = [...country].sort((a, b) => {  // [...country] yah isliye 
+    // kiya hai q ki hame kabhi bhi sate ke stah direct exprement nhi krna chahiye 
+    // phele uska dublicate banana chahiye 
+      return value === "asc"
+        ? a.name.common.localeCompare(b.name.common)
+        : b.name.common.localeCompare(a.name.common);
+    });
+    setCountry(sortCountry);
+  };
+
+
