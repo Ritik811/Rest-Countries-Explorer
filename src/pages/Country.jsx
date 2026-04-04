@@ -8,7 +8,7 @@ export const Country = () => {
   const [isPending, startTransition] = useTransition();
   const [country, setCountry] = useState([]);
   const [search, setSearch] = useState();
-  const [filter, setFilter] = useState("All");
+  const [filter, setFilter] = useState("All"); 
   useEffect(() => {
     startTransition(async () => {
       const res = await getCountryData();
@@ -28,9 +28,15 @@ export const Country = () => {
     } else return curCountry;
   };
 
+  // Filter by Region
+  const filterRegion = (curCountry) => {
+    if (filter === "All") return curCountry;
+    return curCountry.region === filter;
+  };
+
   // Logic of Search Filter in Input Box
-  const filterCountries = country.filter((curCountry) =>
-    searchCountry(curCountry),
+  const filterCountries = country.filter(
+    (curCountry) => searchCountry(curCountry) && filterRegion(curCountry),
   );
 
   return (

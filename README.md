@@ -206,7 +206,7 @@ const res = await getCountryIndData(params.id); // pramas.id hame yah bata hai k
 // Stat functionality in Country page..
 
 1. Search Function and Filter Function
-step 1. search function code:- 
+step 1. search function and Filter code:- 
 
 const searchCountry = (curCountry) => {
     if (search) {
@@ -218,9 +218,13 @@ const searchCountry = (curCountry) => {
     } else return curCountry;
   };
 
-  // Logic of Search Filter in Input Box
-  const filterCountries = country.filter((curCountry) =>
-    searchCountry(curCountry),
-  );
+  // Filter by Region
+  const filterRegion = (curCountry) => {
+    if (filter === "All") return curCountry;
+    return curCountry.region === filter;
+  };
 
-  Step 2. Filter Search
+  // Logic of Search Filter in Input Box
+  const filterCountries = country.filter(
+    (curCountry) => searchCountry(curCountry) && filterRegion(curCountry),
+  );
