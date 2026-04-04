@@ -202,3 +202,25 @@ Step 3. name kaise mila name hame url se mile ga usko access krne ke liya hame u
 code:- const params = useParams(); 
 const res = await getCountryIndData(params.id); // pramas.id hame yah bata hai ki uska id ya name kya hai jis ke madat se spefic country ko search kr skte hai 
 
+
+// Stat functionality in Country page..
+
+1. Search Function and Filter Function
+step 1. search function code:- 
+
+const searchCountry = (curCountry) => {
+    if (search) {
+      return curCountry.name.common
+        .toLowerCase()
+        .includes(search.toLowerCase()); // includes ka mtlb hota hai ki jo bhi 
+        //country ke name ke sath compare ho raha hia includes dekhta hai ki koi bhi
+        // speling uske sath match ho raha hai lkin squence me 
+    } else return curCountry;
+  };
+
+  // Logic of Search Filter in Input Box
+  const filterCountries = country.filter((curCountry) =>
+    searchCountry(curCountry),
+  );
+
+  Step 2. Filter Search
