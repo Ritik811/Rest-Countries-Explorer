@@ -1,4 +1,11 @@
-export const SearchFilter = ({ search, setSearch, filter, setFilter }) => {
+export const SearchFilter = ({
+  search,
+  setSearch,
+  filter,
+  setFilter,
+  country,
+  setCountry,
+}) => {
   const handleInputChange = (evt) => {
     evt.preventDefault();
     setSearch(evt.target.value);
@@ -8,6 +15,18 @@ export const SearchFilter = ({ search, setSearch, filter, setFilter }) => {
     evt.preventDefault();
     setFilter(evt.target.value);
   };
+
+  // des or asc
+  const handleSortCountry = (value) => {
+    console.log("yes");
+    const sortCountry = [...country].sort((a, b) => {
+      return value === "asc"
+        ? a.name.common.localeCompare(b.name.common)
+        : b.name.common.localeCompare(a.name.common);
+    });
+    setCountry(sortCountry);
+  };
+
   return (
     <section className="section-searchFilter container">
       <input
@@ -16,6 +35,14 @@ export const SearchFilter = ({ search, setSearch, filter, setFilter }) => {
         value={search}
         onChange={handleInputChange}
       />
+
+      <div>
+        <button onClick={() => handleSortCountry("asc")}>ASC</button>
+      </div>
+
+      <div>
+        <button onClick={() => handleSortCountry("dsc")}>DES</button>
+      </div>
 
       <div>
         <select

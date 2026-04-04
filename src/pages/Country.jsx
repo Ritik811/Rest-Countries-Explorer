@@ -46,6 +46,8 @@ export const Country = () => {
         setSearch={setSearch}
         filter={filter}
         setFilter={setFilter}
+        country={country}
+        setCountry={setCountry}
       />
       <ul className="grid grid-four-cols">
         {filterCountries.map((curCountry, index) => {

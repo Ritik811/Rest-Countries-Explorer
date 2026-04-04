@@ -228,3 +228,6 @@ const searchCountry = (curCountry) => {
   const filterCountries = country.filter(
     (curCountry) => searchCountry(curCountry) && filterRegion(curCountry),
   );
+
+// Start Sort Asc or Des order 
+Step 1. code:- 
