@@ -13,12 +13,9 @@ export const CountryDetails = () => {
   useEffect(() => {
     startTransition(async () => {
       const res = await getCountryIndData(params.id);
-      console.log(res);
       if (res.status === 200) {
         setCountry(res.data[0]);
       }
-
-      console.log(Object.keys(res.data[0].name.nativeName));
     });
   }, []);
 

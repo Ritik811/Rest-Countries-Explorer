@@ -122,15 +122,83 @@ example
 const handleFormSubmit = (formData) => {
     const data = Object.fromEntries(formData.entries()); 
     // formData.entries() hamara data key pair ke form me lekr ata hai or uske baad usko 
-    Object ki formme convert krne ke liye ham Object.fromEntries ka use krte hai
+    Object ki form me convert krne ke liye ham Object.fromEntries ka use krte hai
     console.log(data);
   };
 
   // Finished..
 
 // Start Creat Footer 
+Step 1. footer me maine thora sa logic ke sath khela hai or kux new chiz sikhi hai.
 
+Step 2. maine Api ke under footer data name ki file bnaya or uske baad usko use krke apna footer implement kiya sabse bara tha ki mujhe uske under icons ko show krana tha jo thora muskil tha.
 
+step 3. Sbse pahele object banao uske baad example:- const footerIcons = {
+    MdPlace: <MdPlace />,
+    IoCallSharp: <IoCallSharp />,
+    TbMailPlus: <TbMailPlus />,
+  };
 
+or isko access hako dynamic tarike se kra prega. code:- 
+<div className="icon">{footerIcons[icon]}</div> 
+ager smjh nhi arha hai toh ek baar code dekh lena bhai bahut jaruri hai 
 
+// Start Country Page...
+Step 1. using Axios get the data all data 
+code:- 
+const api = axios.create({
+  baseURL: "https://restcountries.com/v3.1",
+});
+
+export const getCountryData = () => {
+  return api.get("/all?fields=name,population,region,capital,flags");
+};
+
+Step 2. Learn new Hook useTransition() 
+defination:- isme 2 chize hoti hai first jo hai isPending yah hame bata hai ki data abhi load ho raha hai ager isPending true hai toh data fetch nhi hua hai or second hota hai woh ek function hota hai is function ka use haam useEffect ke under krte hai jab data ko fetch krna hota hai or kabhi bhi useeffect ke under ham async ka use nhi kr skte hai error ata hai 
+
+Code:- 
+ const [isPending, startTransition] = useTransition(); // yah syntax hai 
+  const [country, setCountry] = useState([]);
+  useEffect(() => {
+    startTransition(async () => {  // yaha pr startTranstion ke under call kiya hai
+      const res = await getCountryData();
+      console.log(res.data);
+      setCountry(res.data);
+    });
+  }, []);
+  
+  if (isPending) {  // ager data load nhi hua hai toh loader dikha do 
+    return <Loader />;
+  }
+
+Step 3. jab hame data fecth kr liye uske baad data ko show krwana   
+    <section className="country-section">
+      <ul className="grid grid-four-cols">
+        {country.map((curCountry, index) => {
+          return <CountryCard curCountry={curCountry} key={index} />;
+        })}
+      </ul>
+    </section>
+
+// Star Create Dyanmic root 
+
+Read Only :- means maine Country page pr ek button diya ha jispe click krne se dusra page open hota hai jo dynamic hota hai 
+
+Step 1. {
+        path: "country/:id", // :id hai : ki madat hai root dynamic ban jata hai 
+        element: <CountryDetails />,
+       }, iska use krke create ho jayega 
+
+Step 2. ab mere ko jis country pr click hua hai usko details me shoe krwana hai toh use kiye mujhe spefic path pr data ko fetch krna prega uske liye ham axios ka use krenge code:- 
+export const getCountryIndData = (name) => { // jaise ki maine name mujhe argument 
+// mil rha hai jis se pta chel rha hai ki kon se country ka data fecth krna hai 
+  return api.get(
+    `/name/${name}?fullText=true&fields=name,population,region,subregion,capital,tld,currencies,languages,borders,flags`,
+  );
+};
+
+Step 3. name kaise mila name hame url se mile ga usko access krne ke liya hame useParams() hook ka use krna prta hai 
+code:- const params = useParams(); 
+const res = await getCountryIndData(params.id); // pramas.id hame yah bata hai ki uska id ya name kya hai jis ke madat se spefic country ko search kr skte hai 
 

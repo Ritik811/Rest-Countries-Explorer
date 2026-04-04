@@ -9,7 +9,6 @@ export const Country = () => {
   useEffect(() => {
     startTransition(async () => {
       const res = await getCountryData();
-      console.log(res.data);
       setCountry(res.data);
     });
   }, []);
