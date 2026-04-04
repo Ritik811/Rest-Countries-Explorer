@@ -458,15 +458,19 @@ country Card
     background: linear-gradient(71deg, #080509, #1a171c, #080509);
   }
 
-  & input {
+  input {
     font-family: "urbanist";
     font-size: 1.55rem;
+    height: 3.5rem;
+    border-radius: 15px;
+    padding-left: 10px;
     font-weight: bold;
     letter-spacing: 0.1rem;
     text-transform: capitalize;
     color: rgba(255, 255, 255, 0.8);
     border: 0.05rem solid #fff;
     background: linear-gradient(71deg, #080509, #1a171c, #080509);
+    
   }
 
   & .select-section {
